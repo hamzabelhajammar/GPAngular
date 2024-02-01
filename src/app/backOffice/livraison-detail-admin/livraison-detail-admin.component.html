@@ -1,0 +1,25 @@
+<div class="container mt-3" *ngIf="livraison">
+  <h2>Delivery Details</h2>
+  <div class="row mt-3">
+    <div class="col-md-6">
+      <h4>Livraison Number:</h4>
+      <p>{{ livraison.id }}</p>
+      <h4>Date de sortie:</h4>
+      <p>{{ livraison.date_sortie | date: 'mediumDate' }}</p>
+      <h4>Date d'arrivée:</h4>
+      <p>{{ livraison.date_arrive | date: 'mediumDate' }}</p>
+
+      <h4>Region:</h4>
+      <p>{{ livraison.region }}</p>
+      <h4>Validation:</h4>
+      <p>{{ livraison.validation}}</p>
+
+
+      <h4>Etat:</h4>
+      <p>{{ livraison.etat }}</p>
+    </div>
+  </div>
+  <button mat-button color="primary" class="btn btn-success" (click)="downloadPDF()">Download Contract</button>
+  <button class="btn btn-primary" [routerLink]="['/livraison/aff']">Go back</button>
+
+</div>

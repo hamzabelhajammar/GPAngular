@@ -1,0 +1,76 @@
+/* project-table.component.css */
+/* Add some styling to the table */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+
+/* Style the header row */
+th {
+  background-color: #3498db;
+  color: white;
+  border-radius: 8px 8px 0 0;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+/* Style the "Add Project" button */
+#addProjectButton {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  margin: 20px 0;
+}
+
+#addProjectButton:hover {
+  background-color: #45a049;
+}
+
+/* Style the "Delete Project" and "Update" buttons */
+.action-button {
+  background-color: #e74c3c;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-right: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.action-button.update {
+  background-color: #3498db;
+}
+
+.action-button:hover {
+  background-color: #c0392b;
+}
+
+/* Style the buttons within a table cell */
+.button-cell {
+  text-align: center;
+}
+
+/* Add a subtle hover effect to table rows */
+tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease;
+}

@@ -1,0 +1,65 @@
+<!-- Layout wrapper -->
+<div class="layout-wrapper layout-content-navbar">
+  <div class="layout-container">
+    <app-menu-admin></app-menu-admin>
+    <div class="layout-page">
+      <app-navbar-admin></app-navbar-admin>
+      <div class="content-wrapper">
+        <div class="container-xxl flex-grow-1 container-p-y">
+          <div class="card">
+            <div class="table-responsive text-nowrap">
+              <div class="container">
+                <div class="row justify-content-center">
+                  <div class="section-title text-center mb-5">
+                    <br><br>
+                    <h2 class="text-primary fw-bold">Arrange for delivery.</h2>
+                  </div>
+                  <div class="col-lg-6 col-md-8">
+                    <form class="signin-inner">
+                      <div class="row">
+                        <div class="col-12 mb-4">
+                          <h6 class="sub-title double-line">Date sortie</h6>
+                          <div class="single-input-inner style-bg-border">
+                            <input type="date" name="date_sortie" [(ngModel)]="livraison.date_sortie" class="form-control" style="width:100%" placeholder="date_sortie">
+                          </div>
+                        </div>
+                        <div class="col-12 mb-4">
+                          <h6 class="sub-title double-line">Date arrivée</h6>
+                          <div class="single-input-inner style-bg-border">
+                            <input type="date" name="date_arrive" [(ngModel)]="livraison.date_arrive " class="form-control" style="width:100%" placeholder="date_arrivee">
+                          </div>
+                        </div>
+                        <div class="col-12 mb-4">
+                          <div class="single-input-inner style-bg-border">
+                            <input type="text" name="region" [(ngModel)]="livraison.region" class="form-control" style="width:100%" placeholder="region">
+                          </div>
+                        </div>
+                        <div class="col-12 mb-4">
+                          <div class="single-input-inner style-bg-border">
+                            <input type="text" name="etat" [(ngModel)]="livraison.etat" class="form-control" style="width:100%" placeholder="etat">
+                          </div>
+                        </div>
+                        <div class="col-12 mb-4">
+                          <div class="single-input-inner style-bg-border">
+                            <input type="number" name="validation" [(ngModel)]="livraison.validation" class="form-control" style="width:100%" placeholder="validation">
+                          </div>
+                        </div>
+                        <div class="col-12 text-right">
+                          <button (click)="add()" type="submit" class="btn btn-primary">Create</button>
+                        </div>
+                        <br><br><br>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <app-footer-admin></app-footer-admin>
+      <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+  </div>
+</div>
+

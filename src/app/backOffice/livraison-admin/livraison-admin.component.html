@@ -1,0 +1,24 @@
+<!-- Layout wrapper -->
+<div class="layout-wrapper layout-content-navbar">
+  <div class="layout-container">
+    <app-menu-admin></app-menu-admin>
+    <div class="layout-page">
+      <app-navbar-admin></app-navbar-admin>
+      <div class="content-wrapper">
+        <main role="main" class="container-xxl flex-grow-1 container-p-y">
+          <h1 class="fw-bold py-3 mb-4">Delivery Space</h1>
+          <div class="d-flex justify-content-center align-items-center">
+            <div class="btn-group">
+              <button class="btn btn-primary btn-lg mx-2" (click)="redirectToAdd()">New Delivery</button>
+              <button class="btn btn-primary btn-lg mx-2" (click)="redirectToAff()">Show Deliveries</button>
+              <button class="btn btn-primary btn-lg mx-2" (click)="redirectToAssignLiv()">Assign Delivery</button>
+              <button class="btn btn-primary btn-lg mx-2" (click)="redirectToAssign()">Assign Deliveryman</button>
+            </div>
+          </div>
+        </main>
+      </div>
+      <app-footer-admin></app-footer-admin>
+      <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+  </div>
+</div>

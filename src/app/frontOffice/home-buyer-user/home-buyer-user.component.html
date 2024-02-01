@@ -1,0 +1,411 @@
+<!-- search popup start-->
+<div class="td-search-popup" id="td-search-popup">
+  <form action="index.html" class="search-form">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Search.....">
+    </div>
+    <button type="submit" class="submit-btn"><i class="fa fa-search"></i></button>
+  </form>
+</div>
+<!-- search popup end-->
+<div class="body-overlay" id="body-overlay"></div>
+
+<app-navbar2-user></app-navbar2-user>
+<app-banner-user></app-banner-user>
+
+
+<div class="course-area pd-top-100 pd-bottom-90">
+
+  <form action="index.html" class="search-form">
+
+    <div class="col-md-6">
+      <div class="single-input-inner">
+        <label for="dm">Date:</label>
+        <input type="date" class="form-control" id="dm" name="dm" [(ngModel)]="date" required>              </div>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="afficherTexte()">Afficher</button>
+    <div class="blog-area pd-top-120 pd-bottom-120">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="blog-details-page-content">
+              <div class="single-blog-inner">
+                <div class="details">
+                  <ul class="blog-meta">
+
+                    <li><i class="fa fa-calendar-check-o"></i> {{date}}</li>
+                  </ul>
+
+                  <blockquote >{{texte}}</blockquote>
+
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-xl-8 col-lg-10 col-md-11">
+      <div class="section-title style-white text-center">
+        <h2 class="title">Produits</h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div>
+  <label for="search2">Rechercher un produit :</label>
+  <input type="text" id="search2" name="search" [(ngModel)]="searchTerm">
+</div>
+<div *ngIf="searchTerm">
+  <h3>Résultats de la recherche pour "{{searchTerm}}":</h3>
+  <ul>
+    <li *ngFor="let produit of p">
+      <div *ngIf="produit.name.toLowerCase().includes(searchTerm.toLowerCase())">
+        <h4>{{ produit.name }}</h4>
+
+        <ul>
+          <li *ngFor="let similaire of getSimilarProducts(produit)| async">
+            {{ similaire.name }}
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>
+<div *ngIf="!searchTerm">
+  <h3>Tous les produits :</h3>
+  <ul>
+    <li *ngFor="let produit of produits">
+      <h4>{{ produit.name }}</h4>
+      <p>{{ produit.description }}</p>
+      <ul>
+        <li *ngFor="let similaire of getSimilarProducts(produit)| async">
+          {{ similaire.name }}
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+
+
+
+<!--<div *ngFor="let produit of p | orderBy: 'price': sortOrder">-->
+<!--  <h4>{{ produit.name }}</h4>-->
+<!--  <p>{{ produit.description }}</p>-->
+<!--  <p>Prix : {{ produit.price }}</p>-->
+<!--</div>-->
+<div>
+  <label for="color">Filtrer par couleur :</label>
+  <select id="colors" name="color" [(ngModel)]="selectedColor">
+    <option value="">Toutes les couleurs</option>
+    <option value="#FF0000" style="background-color: #FF0000;" >Rouge</option>
+    <option value="#00FF00" style="background-color: #00FF00;">Vert</option>
+    <option value="#0000FF" style="background-color: #0000FF;">Bleu</option>
+    <option value="#FFFF00" style="background-color: #FFFF00;">Jaune</option>
+    <option value="#FFA500" style="background-color: #FFA500;">Orange</option>
+    <option value="#800080" style="background-color: #800080;">Mauve</option>
+  </select>
+</div>
+
+<div *ngIf="searchTerm || selectedColor">
+  <h3>Résultats de la recherche :</h3>
+  <ul>
+    <li *ngFor="let pr of p">
+      <div *ngIf="(!searchTerm || pr.name.toLowerCase().includes(searchTerm.toLowerCase()))
+                  && (!selectedColor || pr.color.toLowerCase() === selectedColor.toLowerCase())">
+        <div class="tab-pane fade show active" id="tab12" role="tabpanel" aria-labelledby="tab1-tab">
+          <div class="row">
+            <div class="col-lg-4 col-md-6">
+              <div class="single-course-inner">
+                <div class="thumb">
+                  <img src="/assets/front/img/7.png" alt="img">
+                </div>
+                <div class="details">
+                  <div class="details-inner">
+                    <div class="emt-user">
+                      <span class="u-thumb"><img src="/assets/front/img/author/1.png" alt="img"></span>
+                      <span class="align-self-center">{{pr.name}}</span>
+                    </div>
+                    <h6><a href="course-details.html">{{pr.description}}</a></h6>
+                  </div>
+                  <div class="emt-course-meta">
+                    <div class="row">
+                      <div class="col-6">
+                        <div class="rating">
+                          <i class="fa fa-star"></i> 4.3
+                          <span>(23)</span>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="price text-right">
+                          Price: <span>{{pr.price}}</span>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <img alt="" src="data:image/jpeg;base64,{{pr.image}}" >
+                      </div>
+
+                      <button class="btn btn-primary"  (click)="showDetails(pr.id)" >Details</button>
+                      <button (click)="deleteP(pr.id)" class="btn btn-danger">Delete</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="!searchTerm && !selectedColor">
+  <h3>Tous les produits :</h3>
+  <ul>
+    <li *ngFor="let pr of produits">
+      <div class="tab-pane fade show active" id="tab13" role="tabpanel" aria-labelledby="tab1-tab">
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="single-course-inner">
+              <div class="thumb">
+                <img src="/assets/front/img/7.png" alt="img">
+              </div>
+              <div class="details">
+                <div class="details-inner">
+                  <div class="emt-user">
+                    <span class="u-thumb"><img src="/assets/front/img/author/1.png" alt="img"></span>
+                    <span class="align-self-center">{{pr.name}}</span>
+                  </div>
+                  <h6><a href="course-details.html">{{pr.description}}</a></h6>
+                </div>
+                <div class="emt-course-meta">
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="rating">
+                        <i class="fa fa-star"></i> 4.3
+                        <span>(23)</span>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="price text-right">
+                        Price: <span>{{pr.price}}</span>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <img alt="" src="data:image/jpeg;base64,{{pr.image}}" >
+                    </div>
+
+                    <button class="btn btn-primary"  (click)="showDetails(pr.id)" >Details</button>
+                    <button (click)="deleteP(pr.id)" class="btn btn-danger">Delete</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="edmt-nav-tab style-white text-center">
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+
+      <button  class="btn btn-danger" (click)="sortProducts('asc')">Tri croissant</button>
+
+    </li>
+    <li class="nav-item">
+      <button  class="btn btn-primary" (click)="sortProducts('desc')">Tri décroissant</button>
+    </li>
+
+  </ul>
+</div>
+<div class="tab-content" id="myTabContent"*ngFor="let pr of p | orderBy: 'price': sortOrder">
+  <div *ngIf="(!searchTerm || pr.name.toLowerCase().includes(searchTerm.toLowerCase()))
+                  && (!selectedColor || pr.color.toLowerCase() === selectedColor.toLowerCase())">
+    <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
+      <div class="row">
+        <div class="col-lg-3 col-md-6">
+          <div class="single-course-inner">
+            <div class="thumb">
+              <img src="/assets/front/img/7.png" alt="img">
+            </div>
+            <div class="details">
+              <div class="details-inner">
+                <div class="emt-user">
+                  <span class="u-thumb"><img src="/assets/front/img/author/1.png" alt="img"></span>
+                  <span class="align-self-center">{{pr.name}}</span>
+                </div>
+                <h6><a href="course-details.html">{{pr.description}}</a></h6>
+              </div>
+              <div class="emt-course-meta">
+                <div class="row">
+                  <div class="col-6">
+                    <div class="rating">
+                      <i class="fa fa-star"></i> 4.3
+                      <span>(23)</span>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="price text-right">
+                      Price: <span>{{pr.price}}</span>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <img alt="" src="data:image/jpeg;base64,{{pr.image}}" >
+                  </div>
+
+                  <button class="btn btn-primary"  (click)="showDetails(pr.id)" >Details</button>
+                  <button (click)="deleteP(pr.id)" class="btn btn-danger">Delete</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- The popup content -->
+<div class="modal" tabindex="-1" role="dialog" *ngIf="showModal" style="display: block;">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <button *ngIf="isUpdate"  type="button" class="btn-close text-white" aria-label="Close" (click)="closePopupForCreate()"></button>
+        <button *ngIf="!isUpdate"  type="button" class="btn-close text-white" aria-label="Close" (click)="closePopupForUpdate()"></button>
+
+      </div>
+      <div class="modal-body custom-modal-body">
+        <!-- Form inside the popup -->
+        <h2 *ngIf="isUpdate" class="text-center mb-4">ajout </h2>
+        <h2 *ngIf="!isUpdate" class="text-center mb-4">Modifer </h2>
+
+        <form (ngSubmit)="onSubmit()" #boutiqueForm="ngForm" class="p-4 border rounded">
+          <div class="row">
+            <div class="col-12">
+              <div class="single-input-inner style-bg-border">
+                <input type="text" placeholder="Name" class="form-control" id="name" name="name" [(ngModel)]="P.name" required>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="single-input-inner style-bg-border">
+                <input type="text" placeholder="Image" class="form-control" id="image" name="image" [(ngModel)]="P.image" required>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="single-input-inner style-bg-border">
+                <input type="text" placeholder="color" class="form-control" id="color" name="color" [(ngModel)]="P.color" required>
+              </div>
+
+            </div>
+            <div class="col-12">
+              <div class="single-input-inner style-bg-border">
+                <input type="text" placeholder="color" class="form-control" id="color2" name="color" [(ngModel)]="P.color" required>
+              </div>
+
+            </div>
+            <div class="col-12">
+              <div class="single-input-inner style-bg-border">
+
+                <select id="color7" name="color" class="form-control" [(ngModel)]="P.color">
+                  <option value="">--Sélectionner une couleur --</option>
+                  <option value="#FF0000" style="background-color: #FF0000;" >Rouge</option>
+                  <option value="#00FF00" style="background-color: #00FF00;">Vert</option>
+                  <option value="#0000FF" style="background-color: #0000FF;">Bleu</option>
+                  <option value="#FFFF00" style="background-color: #FFFF00;">Jaune</option>
+                  <option value="#FFA500" style="background-color: #FFA500;">Orange</option>
+                  <option value="#800080" style="background-color: #800080;">Mauve</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="single-input-inner style-bg-border">
+                <input type="number" placeholder="Prix" class="form-control" id="price" name="price" [(ngModel)]="P.price" required>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="single-input-inner style-bg-border">
+                <textarea placeholder="Description"  class="form-control" id="description" name="description" [(ngModel)]="P.description" required></textarea>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="single-input-inner">
+                <label for="productStatus">Status:</label>
+                <select  id="productStatus" name="productStatus" [(ngModel)]="P.status">
+                  <option value="">--Sélectionner le statut --</option>
+                  <option *ngFor="let status of productStatusOptions" [value]="status.value">{{status.label}}</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="single-input-inner">
+                <label for="cat">Categories:</label>
+                <select placeholder="categories"  id="cat" name="categories" [(ngModel)]="P.categorie.id">
+                  <option *ngFor="let c of categories" [value]="c.id">{{c.type}}</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="single-input-inner">
+                <label for="cat">Stock:</label>
+                <select placeholder="categories"  id="stock" name="stock" [(ngModel)]="P.stock.id">
+                  <option *ngFor="let c of stocks" [value]="c.id">{{c.quantity}}</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="single-input-inner">
+                <label for="cat">Boutique:</label>
+                <select placeholder="boutiques"  id="bou" name="categories" [(ngModel)]="P.boutique.id">
+                  <option *ngFor="let c of boutiques" [value]="c.id">{{c.nom}}</option>
+                </select>
+              </div>
+            </div>
+
+
+            <div class="col-md-6">
+              <div class="single-input-inner">
+                <input type="text" placeholder="vendor@gmail.com" class="form-control" id="mail" name="mail" [(ngModel)]="P.vendorMail" required>              </div>
+            </div>
+
+          </div>
+          <div class="text-center">
+            <button *ngIf="isUpdate" type="submit" class="btn btn-info" [disabled]="!boutiqueForm.valid">Modifier</button>
+          </div>
+        </form>
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button *ngIf="isUpdate" type="button" class="btn btn-secondary" (click)="closePopupForUpdate()">Close</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- course area End -->
+<app-footer-user></app-footer-user>
+
+

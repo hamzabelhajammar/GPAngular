@@ -1,0 +1,48 @@
+
+<div class="body-overlay" id="body-overlay"></div>
+
+<app-navbar2-user></app-navbar2-user>
+<br><br><br>
+<!--body-->
+
+<!-- signup-page-Start -->
+<div class="signup-page-area pd-top-120 pd-bottom-120">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="section-title text-center">
+        <h6 class="sub-title double-line">Ajout</h6>
+        <h2 class="title">categories /sous-categories</h2>
+      </div>
+      <div class="col-xl-6 col-lg-7">
+        <form [formGroup]="categorieForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="type">Type de la catégorie :</label>
+            <input type="text" class="form-control" id="type" formControlName="type">
+          </div>
+
+          <div formArrayName="subCategories">
+
+            <div *ngFor="let subCategory of subCategories.controls; let i=index" [formGroupName]="i">
+
+              <label>Type de la sous-catégorie {{i+1}} :</label>
+              <input type="text" formControlName="type">
+              <div formArrayName="subCategories">
+                <button type="button" class="btn btn-primary" (click)="addSubCategory(i)">Ajouter une sous-catégorie</button>
+                <button type="button" class="btn btn-primary" (click)="removeSubCategory(i)">Supprimer la sous-catégorie</button>
+              </div>
+
+            </div>
+
+          </div>
+          <br>
+          <br>
+          <br>
+          <button type="submit" class="btn btn-primary">Créer la catégorie</button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- signup-page-end -->
+<app-footer-user></app-footer-user>

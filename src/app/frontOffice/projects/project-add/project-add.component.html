@@ -1,0 +1,67 @@
+<div class="body-overlay" id="body-overlay"></div>
+<app-navbar2-user></app-navbar2-user><br><br><br><br>
+<br><br><br>
+<div class="container" ng-app="myApp" ng-controller="myCtrl">
+    <h2>Création d'un module projet</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="nom">Nom du projet:</label>
+        <input type="text" class="form-control" id="nom" [(ngModel)]="projet.nom" name="nom">
+      </div>
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea class="form-control" id="description" [(ngModel)]="projet.description" name="description"></textarea>
+      </div>
+      <div>
+      <div class="col-sm-6">
+        <p class="m-b-10 f-w-600">Domaine de Projet</p>
+        <select class="form-select col-sm-8" id="inputGroupSelect03" aria-label="Example select with button addon">
+          <option selected>Development</option>
+          <option selected>BI</option>
+          <option value="1"></option>
+
+        </select>
+      </div>
+      </div>
+      <div class="form-group">
+        <label for="dateDebut">Date de début:</label>
+        <input type="date" class="form-control" id="dateDebut" [(ngModel)]="projet.dateDebut" name="dateDebut">
+      </div>
+      <div class="form-group">
+        <label for="dateFin">Date de fin:</label>
+        <input type="date" class="form-control" id="dateFin" [(ngModel)]="projet.dateFin" name="dateFin">
+      </div>
+      <div class="form-group">
+        <label>Tâches:</label>
+        <div *ngFor="let tache of projet.taches; let i = index" class="tache-group">
+          <div class="form-row">
+            <div class="col">
+              <input type="text" class="form-control" [(ngModel)]="tache.nom" name="nomTache{{i}}" placeholder="Nom de la tâche">
+            </div>
+            <div class="col">
+              <textarea class="form-control" [(ngModel)]="tache.description" name="descriptionTache{{i}}" placeholder="Description de la tâche"></textarea>
+            </div>
+            <div class="col">
+              <input type="number" class="form-control" [(ngModel)]="tache.duree" name="dureeTache{{i}}" placeholder="Durée (en jours)">
+            </div>
+
+            <div class="col-sm-6">
+              <select class="form-select col-sm-8" id="inputGroupSelect03" aria-label="Example select with button addon">
+                <option selected>Hamza bel hajammar</option>
+                <option selected>Adem dami</option>
+                <option selected>Ahmed mezgheni</option>
+                <option value="1"></option>
+
+              </select>
+            </div>
+            <div class="col">
+              <button type="button" class="btn btn-danger" (click)="supprimerTache(i)">Supprimer</button>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary" (click)="ajouterTache()">Ajouter une tâche</button>
+      </div>
+      <button type="submit" class="btn btn-success" (click)="creerprojet()">Créer le projet</button>
+    </form>
+  </div>
+<app-footer-user></app-footer-user>

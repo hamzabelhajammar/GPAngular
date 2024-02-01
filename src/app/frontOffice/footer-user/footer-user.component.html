@@ -1,0 +1,80 @@
+<!-- footer area start -->
+<footer class="footer-area bg-gray">
+  <div class="footer-subscribe">
+    <div class="container">
+
+      <form class="footer-subscribe-inner" (ngSubmit)="subscribe()">
+
+        <div class="row justify-content-center">
+          <div class="col-lg-5">
+            <div class="single-input-inner style-border-bottom">
+              <input [(ngModel)]="email" [ngModelOptions]="{standalone: true}" placeholder="Enter your email" type="email" class="form-control" id="email" required>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <button type="submit" class="btn btn-base w-100">Subscribe</button>
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-md-6">
+
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <div class="widget widget_nav_menu">
+            <h4 class="widget-title">Course</h4>
+            <ul>
+              <li><a href="course.html">Branding design</a></li>
+              <li><a href="course.html">Ui/Ux designing </a></li>
+              <li><a href="course.html">Make Elements</a></li>
+              <li><a href="course.html">Business</a></li>
+              <li><a href="course.html">Graphics design</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="widget widget_contact">
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 align-self-center">
+          <a href="index.html"><img src="/assets/back/img/ha.png" alt="img"></a>
+        </div>
+        <div class="col-lg-4  col-md-6 order-lg-12 text-md-right align-self-center">
+          <ul class="social-media mt-md-0 mt-3">
+            <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a class="instagram" href="#"><i class="fa fa-instagram"></i></a></li>
+            <li><a class="youtube" href="#"><i class="fa fa-youtube"></i></a></li>
+            <li><a class="pinterest" href="#"><i class="fa fa-pinterest"></i></a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 order-lg-8 text-lg-center align-self-center mt-lg-0 mt-3">
+          <p>copyright 2023 by Sopra</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- footer area end -->
+
+<!-- back to top area start -->
+<div class="back-to-top">
+  <span class="back-top"><i class="fa fa-angle-up"></i></span>
+</div>
+<!-- back to top area end -->

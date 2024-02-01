@@ -1,0 +1,38 @@
+<div class="layout-wrapper layout-content-navbar">
+  <div class="layout-container">
+    <app-menu-admin></app-menu-admin>
+    <div class="layout-page">
+      <app-navbar-admin></app-navbar-admin>
+      <div class="content-wrapper">
+        <div class="container-xl flex-grow-1 container-p-y">
+          <div class="row justify-content-center">
+            <div class="col-lg-8 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <h2 class="text-primary fw-bold text-center mb-4">Assign Deliveryman</h2>
+                  <div class="row mb-3">
+                    <div class="col-12 col-md-6">
+                      <label for="region" class="form-label mb-1">Région de la commande</label>
+                      <div class="input-group">
+                        <input type="text" id="region" name="region" class="form-control" [(ngModel)]="region" placeholder="region">
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <label for="id" class="form-label mb-1">Id livreur</label>
+                      <div class="input-group">
+                        <input type="number" id="id" name="id" class="form-control" [(ngModel)]="id" placeholder="id">
+                      </div>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary w-100" (click)="assignerLivreur()" [routerLink]="['/livraison/aff']">Assign</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <app-footer-admin></app-footer-admin>
+      <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+  </div>
+</div>

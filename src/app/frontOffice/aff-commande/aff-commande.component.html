@@ -1,0 +1,93 @@
+
+<div class="body-overlay" id="body-overlay"></div>
+<app-navbar2-user></app-navbar2-user>
+<br><br><br>
+<br><br><br>
+<!-- course area start -->
+<div class="course-area pd-top-100 pd-bottom-90">
+  <div class="container text-center">
+    <div class="section-title">
+      <h6 class="sub-title double-line">Order Space</h6>
+      <h2 class="title">Order List</h2>
+    </div>
+    <table class="table table-bordered mx-auto">
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Amount</th>
+        <th>OrderStatus</th>
+        <th>Region</th>
+        <th>Affected</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody class="table-border-bottom-0">
+      <tr *ngFor="let u of commandes" >
+        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{u.id}}</strong></td>
+        <td>{{u.amount}} </td>
+        <td>{{u.status}}</td>
+        <td>{{u.region}}</td>
+        <td>{{u.affected}}</td>
+
+        <td>
+          <button (click)="deleteCommande(u.id)" class="btn btn-danger">Delete</button>
+          <button (click)="openPopupForUpdate(u)" class="btn btn-info">Update</button>
+          <button (click)="checkout(u.id)" class="btn bg-green">Pay</button>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="9" class="line"></td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="modal" tabindex="-1" role="dialog" *ngIf="showModal" style="display: block;">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-primary text-white">
+            <button *ngIf="!isUpdate"  type="button" class="btn-close text-white" aria-label="Close" (click)="closePopupForUpdate()"></button>
+
+          </div>
+          <div class="modal-body custom-modal-body">
+            <!-- Form inside the popup -->
+
+            <h2 *ngIf="isUpdate" class="text-center mb-4">Modifer</h2>
+
+            <form (ngSubmit)="onSubmit()" #Form="ngForm" class="p-4 border rounded">
+              <div class="form-group">
+                <label for="date_arrive">Amount</label>
+                <input type="number" class="form-control" id="date_arrive" name="date_arrive" [(ngModel)]="commande.amount" required>
+              </div>
+              <div class="form-group">
+                <label for="date_sortie">Order_Status</label>
+                <input type="text" class="form-control" id="date_sortie" name="date_sortie" [(ngModel)]="commande.status" required>
+              </div>
+              <div class="form-group">
+                <label for="region">Region:</label>
+                <input type="text" class="form-control" id="region" name="region" [(ngModel)]="commande.region">
+              </div>
+              <div class="form-group">
+                <label for="validation">Affected</label>
+                <input type="number" class="form-control" id="validation" name="validation" [(ngModel)]="commande.affected" required>
+              </div>
+
+              <div class="text-center">
+                <button *ngIf="isUpdate" type="submit" class="btn btn-info" [disabled]="!Form.valid">Modifier</button>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button *ngIf="isUpdate" type="button" class="btn btn-secondary" (click)="closePopupForUpdate()">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+<br><br><br><br><br><br>
+<!-- course area End -->
+<app-footer-user></app-footer-user>
+
+
+

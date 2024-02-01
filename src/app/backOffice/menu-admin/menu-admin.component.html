@@ -1,0 +1,116 @@
+<!-- Menu -->
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+  <div class="app-brand demo">
+    <a (click)="redirectToHome()"  style="cursor: pointer;">
+      <img src="/assets/back/img/ha.png" class="app-brand-logo demo">
+    </a>
+  </div>
+  <br>
+  <div class="menu-inner-shadow"></div>
+
+  <ul class="menu-inner py-1">
+    <!-- Dashboard -->
+    <li class="menu-item ">
+      <a (click)="redirectToHome()"  style="cursor: pointer;" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-home-circle"></i>
+        <div data-i18n="Analytics">Dashboard</div>
+      </a>
+    </li>
+    <li class="menu-item ">
+      <a (click)="logout()"  style="cursor: pointer;" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-door-open"></i>
+        <div data-i18n="Analytics">Logout</div>
+      </a>
+    </li>
+
+    <li class="menu-header small text-uppercase">
+      <span class="menu-header-text">Pages</span>
+    </li>
+    <li class="menu-item">
+      <a (click)="redirectToRegister()"  style="cursor: pointer;" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-registered"></i>
+        <div data-i18n="Analytics">Register</div>
+      </a>
+    </li>
+    <li class="menu-item ">
+      <a (click)="redirectToShow()"  style="cursor: pointer;" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-show-alt"></i>
+        <div data-i18n="Analytics">Show Users</div>
+      </a>
+    </li>
+    <li class="menu-item ">
+      <a (click)="redirectToSend()"  style="cursor: pointer;" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-envelope"></i>
+        <div data-i18n="Analytics">Send An Email</div>
+      </a>
+    </li>
+    <li class="menu-item ">
+      <a (click)="redirectToReceive()"  style="cursor: pointer;" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-envelope-open"></i>
+        <div data-i18n="Analytics">Show Emails</div>
+      </a>
+    </li>
+<!--   bouton taa ajouter un mot rahi b popup-->
+    <li class="menu-item ">
+      <a (click)="openPopupForCreate()"  style="cursor: pointer;" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-no-entry"></i>
+        <div data-i18n="Analytics">Bad Words Filter</div>
+      </a>
+    </li>
+    <!-- The popup content -->
+    <div class="modal" tabindex="-1" role="dialog" *ngIf="showModal" style="display: block;">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-primary text-white">
+
+            <button *ngIf="isUpdate"  type="button" class="btn-close text-white" aria-label="Close" (click)="closePopupForCreate()"></button>
+
+          </div>
+          <div class="modal-body custom-modal-body">
+            <!-- Form inside the popup -->
+
+            <h2 *ngIf="!isUpdate" class="text-center mb-4">Ajouter le Mot</h2>
+
+            <form (ngSubmit)="onSubmit()" #boutiqueForm="ngForm" class="p-4 border rounded">
+              <div class="form-group">
+                <label for="Mot">Mot :</label>
+                <input type="text" class="form-control" id="Mot" name="Mot" [(ngModel)]="badword.mot" required>
+              </div>
+
+
+              <div class="text-center">
+                <button *ngIf="!isUpdate" type="submit" class="btn btn-primary" [disabled]="!boutiqueForm.valid">Ajouter</button>
+              </div>
+            </form>
+
+          </div>
+          <div class="modal-footer">
+            <button *ngIf="!isUpdate" type="button" class="btn btn-secondary" (click)="closePopupForCreate()">Close</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <li class="menu-item ">
+      <a (click)="redirectToLivraison()"  style="cursor: pointer;" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-package"></i>
+        <div data-i18n="Analytics">Manage Delivery</div>
+      </a>
+    </li>
+    <li class="menu-item ">
+      <a (click)="redirectToKhayri()"  style="cursor: pointer;" class="menu-link">
+        <i class="menu-icon tf-icons bx bxs-credit-card" type="solid"></i>
+        <div data-i18n="Analytics">Deals</div>
+      </a>
+    </li>
+
+
+
+
+
+
+
+  </ul>
+</aside>
+<!-- / Menu -->

@@ -1,0 +1,133 @@
+<!-- Layout wrapper -->
+<div class="layout-wrapper layout-content-navbar">
+  <div class="layout-container">
+    <app-menu-admin></app-menu-admin>
+    <div class="layout-page">
+      <app-navbar-admin></app-navbar-admin>
+      <div class="content-wrapper">
+        <div class="container-xxl flex-grow-1 container-p-y">
+          <!-- Basic Bootstrap Table -->
+          <div class="card">
+            <div class="table-responsive text-nowrap">
+
+              <div class="container">
+                <div class="row d-flex justify-content-center">
+
+                  <div class="col-md-6 text-center">
+                    <br><br>
+                    <div class="input-group">
+                      <input type="text" [(ngModel)]="searchValue" class="form-control me-3" placeholder="Rechercher par region...">
+                      <button class="btn btn-primary" (click)="searchByRegion(searchValue)">Rechercher</button>
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+              <br><br>
+              <table class="table">
+                <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Date_arr</th>
+                  <th>Date_sortie</th>
+                  <th>Region</th>
+                  <th>Validation</th>
+                  <th>Etat</th>
+                  <th>Action</th>
+
+
+                </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+                <tr *ngFor="let u of livraisons" >
+                  <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{u.id}}</strong></td>
+                  <td>{{u.date_arrive}} </td>
+                  <td>{{u.date_sortie}}</td>
+                  <td>{{u.region}}</td>
+                  <td>{{u.validation}}</td>
+                  <td>{{u.etat}}</td>
+                  <td>
+                    <button (click)="deleteLiv(u.id)" class="btn btn-danger">Delete</button>
+                    <button (click)="openPopupForUpdate(u)" class="btn btn-info">Update</button>
+                    <button class="btn btn-primary" [routerLink]="['/livraison/detail',u.id]" >Details</button>
+
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="9" class="line"></td>
+                </tr>
+                </tbody>
+              </table>
+
+              <br><br><br>
+
+              <div class="modal" tabindex="-1" role="dialog" *ngIf="showModal" style="display: block;">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                      <button *ngIf="!isUpdate"  type="button" class="btn-close text-white" aria-label="Close" (click)="closePopupForUpdate()"></button>
+
+                    </div>
+                    <div class="modal-body custom-modal-body">
+                      <!-- Form inside the popup -->
+
+                      <h2 *ngIf="isUpdate" class="text-center mb-4">Modifer</h2>
+
+                      <form (ngSubmit)="onSubmit()" #boutiqueForm="ngForm" class="p-4 border rounded">
+                        <div class="form-group">
+                          <label for="date_arrive">date arr:</label>
+                          <input type="date" class="form-control" id="date_arrive" name="date_arrive" [(ngModel)]="livraison.date_arrive" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="date_sortie">date sortie :</label>
+                          <input type="date" class="form-control" id="date_sortie" name="date_sortie" [(ngModel)]="livraison.date_sortie" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="region">Region:</label>
+                          <input type="text" class="form-control" id="region" name="region" [(ngModel)]="livraison.region">
+                        </div>
+                        <div class="form-group">
+                          <label for="validation">Validation :</label>
+                          <input type="number" class="form-control" id="validation" name="validation" [(ngModel)]="livraison.validation" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="etat">Etat :</label>
+                          <input type="text" class="form-control" id="etat" name="etat" [(ngModel)]="livraison.etat" required>
+                        </div>
+                        <div class="text-center">
+                          <button *ngIf="isUpdate" type="submit" class="btn btn-info" [disabled]="!boutiqueForm.valid">Modifier</button>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button *ngIf="isUpdate" type="button" class="btn btn-secondary" (click)="closePopupForUpdate()">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row text-center">
+                <div class="col-6">
+                  <button class="btn btn-primary" [routerLink]="['/livraison/assignLiv']">Assign Delivery</button>
+                </div>
+                <div class="col-6">
+                  <button class="btn btn-primary" [routerLink]="['/livraison/assign']">Assign Delivery_Person</button>
+                </div>
+              </div>
+
+
+
+
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <app-footer-admin></app-footer-admin>
+      <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+  </div>
+</div>
+

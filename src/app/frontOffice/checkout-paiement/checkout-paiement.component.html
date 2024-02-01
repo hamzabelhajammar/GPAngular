@@ -1,0 +1,46 @@
+<br>
+<div class="container justify-content-center">
+  <h1 class="text-center">Montant à payer : {{ amountToPay }} DT</h1>
+  <br>
+  <form class="form" id="paymentForm">
+    <div class="form-group">
+      <label for="cardNumber"><i class="fas fa-credit-card"></i> Numéro de carte de crédit :</label>
+      <input type="tel" id="cardNumber" name="cardNumber" aria-label="Numéro de carte de crédit" placeholder="Numéro de carte de crédit" pattern="[0-9]{13,19}" required>
+      <small class="form-text text-muted">Veuillez entrer un numéro de carte de crédit valide.</small>
+    </div>
+    <div class="form-row">
+      <br>
+      <div class="form-group col-md-6">
+        <label for="expMonth"><i class="far fa-calendar-alt"></i> Mois d'expiration :</label>
+        <select class="form-control" id="expMonth" name="expMonth" aria-label="Mois d'expiration" required>
+          <option value="" selected disabled hidden>Sélectionnez un mois</option>
+          <option value="01">Janvier</option>
+          <option value="02">Février</option>
+          <option value="03">Mars</option>
+          <option value="04">Avril</option>
+          <option value="05">Mai</option>
+          <option value="06">Juin</option>
+          <option value="07">Juillet</option>
+          <option value="08">Août</option>
+          <option value="09">Septembre</option>
+          <option value="10">Octobre</option>
+          <option value="11">Novembre</option>
+          <option value="12">Décembre</option>
+        </select>
+      </div>
+      <br>
+      <div class="form-group col-md-6">
+        <label for="expYear"><i class="far fa-calendar-alt"></i> Année d'expiration :</label>
+        <input type="number" id="expYear" name="expYear" aria-label="Année d'expiration" placeholder="Année d'expiration" required>
+      </div>
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="cvc"><i class="fas fa-lock"></i> Code de sécurité (CVC) :</label>
+      <input type="text" id="cvc" name="cvc" aria-label="Code de sécurité (CVC)" placeholder="Code de sécurité (CVC)" pattern="[0-9]{3,4}" required>
+      <small class="form-text text-muted">Le CVC est généralement composé de trois ou quatre chiffres.</small>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary btn-block" (click)="chargeCreditCard()">Valider</button>
+  </form>
+</div>

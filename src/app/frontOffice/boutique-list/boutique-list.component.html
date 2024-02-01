@@ -1,0 +1,147 @@
+
+<div class="body-overlay" id="body-overlay"></div>
+<app-navbar2-user></app-navbar2-user>
+<br><br><br>
+<div *ngIf="notification" class="notification">
+  {{notification}}
+</div>
+
+<!-- course area start -->
+<div class="course-area pd-top-100 pd-bottom-90">
+  <div class="container text-center">
+    <div class="section-title">
+      <h6 class="sub-title double-line">Vendor Space</h6>
+      <h2 class="title">Manage Your Shop.</h2>
+    </div>
+    <div class="d-flex justify-content-center">
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-9">
+            <input type="text" [(ngModel)]="searchValue" class="form-control" placeholder="Rechercher par adresse...">
+          </div>
+          <div class="col-md-3">
+            <button type="submit" class="submit-btn" (click)="searchByAddress(searchValue)"><i class="fa fa-search"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br><br>
+    <button class="btn btn-base sort-button" (click)="sortBoutiques()">Sort</button>
+    <button class="btn btn-base custom-btn" (click)="openPopupForCreate()">New Shop</button>
+    <br><br>
+    <table>
+      <thead>
+      <tr>
+        <th class="table-header">ID</th>
+        <th class="table-header">Nom</th>
+        <th class="table-header">Adresse</th>
+        <th class="table-header">Description</th>
+        <th class="table-header">Logo</th>
+        <th class="table-header">Nombre de produits</th>
+        <th class="table-header" style="width: 300px">IBAN</th>
+        <th class="table-header" style="width: 150px">BIC</th>
+        <th class="table-header">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let boutique of boutiques; let i=index;" [ngClass]="{'odd': i % 2 == 0, 'even': i % 2 != 0}">
+        <td>{{ boutique.id }}</td>
+        <td>{{ boutique.nom }}</td>
+        <td>{{ boutique.address }}</td>
+        <td>{{ boutique.description }}</td>
+        <td>{{ boutique.logo }}</td>
+        <td>{{ boutique.productsNumber }}</td>
+        <td>{{ boutique.iban }}</td>
+        <td>{{ boutique.bic }}</td>
+        <td>
+          <button (click)="deleteBoutique(boutique.id)" class="btn btn-danger">Supprimer</button>
+          <button (click)="openPopupForUpdate(boutique)" class="btn btn-info">Modifier</button>
+
+        </td>
+      </tr>
+      <tr>
+        <td colspan="9" class="line"></td>
+      </tr>
+      </tbody>
+    </table>
+    <!-- Button to trigger the popup -->
+    <div class="modal" tabindex="-1" role="dialog" *ngIf="showModal" style="display: block;">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-primary text-white">
+
+            <button *ngIf="!isUpdate"  type="button" class="btn-close text-white" aria-label="Close" (click)="closePopupForUpdate()"></button>
+            <button *ngIf="isUpdate"  type="button" class="btn-close text-white" aria-label="Close" (click)="closePopupForCreate()"></button>
+
+          </div>
+          <div class="modal-body custom-modal-body">
+            <!-- Form inside the popup -->
+
+
+
+
+
+            <h2 *ngIf="!isUpdate" class="text-center mb-4">Ajouter votre boutique</h2>
+            <h2 *ngIf="isUpdate" class="text-center mb-4">Modifer votre boutique</h2>
+
+            <form (ngSubmit)="onSubmit()" #boutiqueForm="ngForm" class="p-4 border rounded">
+              <div class="form-group">
+                <label for="nom">Nom :</label>
+                <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="boutique.nom" required>
+              </div>
+              <div class="form-group">
+                <label for="address">Adresse :</label>
+                <input type="text" class="form-control" id="address" name="address" [(ngModel)]="boutique.address" required>
+              </div>
+              <div class="form-group">
+                <label for="description">Description :</label>
+                <textarea class="form-control" id="description" name="description" [(ngModel)]="boutique.description"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="logo">Logo :</label>
+                <input type="text" class="form-control" id="logo" name="logo" [(ngModel)]="boutique.logo" required>
+              </div>
+              <div class="form-group">
+                <label for="productsNumber">Nombre de produits :</label>
+                <input type="number" class="form-control" id="productsNumber" name="productsNumber" [(ngModel)]="boutique.productsNumber" required>
+              </div>
+              <div class="form-group">
+                <label for="iban">IBAN :</label>
+                <input type="text" class="form-control" id="iban" name="iban" [(ngModel)]="boutique.iban" required>
+              </div>
+              <div class="form-group">
+                <label for="bic">BIC :</label>
+                <input type="text" class="form-control" id="bic" name="bic" [(ngModel)]="boutique.bic" required>
+              </div>
+
+              <div id="notification"></div>
+
+              <div class="text-center">
+                <button *ngIf="!isUpdate" type="submit" class="btn btn-primary" [disabled]="!boutiqueForm.valid">Ajouter</button>
+                <button *ngIf="isUpdate" type="submit" class="btn btn-info" [disabled]="!boutiqueForm.valid">Modifier</button>
+              </div>
+
+
+            </form>
+
+
+
+
+
+          </div>
+          <div class="modal-footer">
+            <button *ngIf="!isUpdate" type="button" class="btn btn-secondary" (click)="closePopupForCreate()">Close</button>
+            <button *ngIf="isUpdate" type="button" class="btn btn-secondary" (click)="closePopupForUpdate()">Close</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- course area End -->
+<app-footer-user></app-footer-user>
+
+
+

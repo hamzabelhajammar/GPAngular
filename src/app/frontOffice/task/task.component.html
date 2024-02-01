@@ -1,0 +1,92 @@
+<div class="body-overlay" id="body-overlay"></div>
+<app-navbar2-user></app-navbar2-user>
+<br><br><br><br>
+<div class="container m-5">
+  <h2>Liste des tasks</h2>
+  <button class="btn btn-primary mb-5" (click)="showadd()" >Ajoute un task</button>
+
+  <!-- Table to display project information -->
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>Logo</th>
+      <th>Nom de la tâche</th>
+      <th>Description</th>
+      <th>Durée</th>
+      <th>Employee</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr>
+      <td>8 </td>
+      <td>gestion de profile </td>
+      <td>testtesttest </td>
+      <td>3</td>
+      <td>
+        <select id="employee" class="swal2-input">
+          <option value="employee1">Ahmed mezghani</option>
+          <option value="employee2">Adem daami</option>
+          <option value="employee3">hamzan lasoud</option>
+          <option value="employee3">Mohamed chebbi</option>
+          <!-- Add more options as needed -->
+        </select>
+      <td style="color: red; font-size: 16px; font-weight: bold;">En cours</td>
+      <td class="button-cell">
+        <button (click)="deleted()"class="btn btn-danger" >Supprimer</button>
+        <button (click)="show()" class="btn btn-info">Mettre à jour</button>
+      </td>
+    </tr>
+
+    <tr>
+      <td>15 </td>
+      <td>gestion de user </td>
+      <td>testtest </td>
+      <td>5</td>
+      <td>
+        <select id="employees" class="swal2-input">
+          <option value="employee1">Ahmed mezghani</option>
+          <option value="employee2">Adem daami</option>
+          <option value="employee3">hamzan lasoud</option>
+          <option value="employee3">Mohamed chebbi</option>
+          <option value="employee3">yosra dab</option>
+          <!-- Add more options as needed -->
+        </select>
+      </td>
+
+      <td style="color: green; font-size: 16px; font-weight: bold;">Terminé</td>
+
+
+      <td class="button-cell">
+        <button (click)="deleted()"class="btn btn-danger" >Supprimer</button>
+        <button (click)="show()" class="btn btn-info">Mettre à jour</button>
+      </td>
+    </tr>
+    <tr>
+      <td>77 </td>
+      <td>gestion de reclamtion </td>
+      <td>testtesttest </td>
+      <td>4</td>
+      <td>
+        <select id="employeee" class="swal2-input">
+          <option value="employee1">Ahmed mezghani</option>
+          <option value="employee2">Adem daami</option>
+          <option value="employee3">hamzan lasoud</option>
+          <option value="employee3">Mohamed chebbi</option>
+          <!-- Add more options as needed -->
+        </select>
+      <td style="color: green; font-size: 16px; font-weight: bold;">Terminé</td>
+      <td class="button-cell">
+        <button (click)="deleted()"class="btn btn-danger" >Supprimer</button>
+        <button (click)="show()" class="btn btn-info">Mettre à jour</button>
+      </td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<app-footer-user></app-footer-user>
+

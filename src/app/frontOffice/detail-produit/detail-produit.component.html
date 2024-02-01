@@ -1,0 +1,149 @@
+
+
+<!-- search popup start-->
+<div class="td-search-popup" id="td-search-popup">
+  <form action="index.html" class="search-form">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Search.....">
+    </div>
+    <button type="submit" class="submit-btn"><i class="fa fa-search"></i></button>
+  </form>
+</div>
+<!-- search popup end-->
+<div class="body-overlay" id="body-overlay"></div>
+
+<app-navbar-user></app-navbar-user>
+<app-banner-user></app-banner-user>
+<!--body-->
+
+<!-- signup-page-Start -->
+<div class="signup-page-area pd-top-120 pd-bottom-120">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="section-title text-center">
+        <h6 class="sub-title double-line">Affichage</h6>
+        <h2 class="title">Details du produit  {{P.name}}</h2>
+      </div>
+      <div class="col-xl-6 col-lg-7">
+        <form class="signin-inner">
+          <div class="row">
+            <div class="col-12">
+              <div class="single-input-inner style-bg-border">
+                <input type="text" placeholder="Name" class="form-control" id="name" name="name" [(ngModel)]="P.name" required>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="single-input-inner style-bg-border">
+                <input type="text" placeholder="Image" class="form-control" id="image" name="image" [(ngModel)]="P.image" required>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="single-input-inner style-bg-border">
+                <input type="text" placeholder="color" class="form-control" id="color" name="color" [(ngModel)]="P.color" required>
+              </div>
+
+            </div>
+            <div class="col-12">
+              <div class="single-input-inner style-bg-border">
+                <input type="text" placeholder="color" class="form-control" id="color2" name="color" [(ngModel)]="P.color" required>
+              </div>
+
+            </div>
+            <div class="col-12">
+              <div class="single-input-inner style-bg-border">
+
+                <select id="color7" name="color" class="form-control" [(ngModel)]="P.color">
+                  <option value="">--Sélectionner une couleur --</option>
+                  <option value="#FF0000" style="background-color: #FF0000;" >Rouge</option>
+                  <option value="#00FF00" style="background-color: #00FF00;">Vert</option>
+                  <option value="#0000FF" style="background-color: #0000FF;">Bleu</option>
+                  <option value="#FFFF00" style="background-color: #FFFF00;">Jaune</option>
+                  <option value="#FFA500" style="background-color: #FFA500;">Orange</option>
+                  <option value="#800080" style="background-color: #800080;">Mauve</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="single-input-inner style-bg-border">
+                <input type="number" placeholder="Prix" class="form-control" id="price" name="price" [(ngModel)]="P.price" required>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="single-input-inner style-bg-border">
+                <textarea placeholder="Description"  class="form-control" id="description" name="description" [(ngModel)]="P.description" required></textarea>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="single-input-inner">
+                <label for="productStatus">Status:</label>
+                <select  id="productStatus" name="productStatus" [(ngModel)]="P.status">
+                  <option value="">--Sélectionner le statut --</option>
+                  <option *ngFor="let status of productStatusOptions" [value]="status.value">{{status.label}}</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="single-input-inner">
+                <label for="cat">Categories:</label>
+                <select placeholder="categories"  id="cat" name="categories" [(ngModel)]="P.categorie.id">
+                  <option *ngFor="let c of categories" [value]="c.id">{{c.type}}</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="single-input-inner">
+                <label for="cat">Stock:</label>
+                <select placeholder="categories"  id="stock" name="stock" [(ngModel)]="P.stock.id">
+                  <option *ngFor="let c of stocks" [value]="c.id">{{c.quantity}}</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="single-input-inner">
+                <label for="cat">Boutique:</label>
+                <select placeholder="boutiques"  id="bou" name="categories" [(ngModel)]="P.boutique.id">
+                  <option *ngFor="let c of boutiques" [value]="c.id">{{c.nom}}</option>
+                </select>
+              </div>
+            </div>
+
+
+            <div class="col-md-6">
+              <div class="single-input-inner">
+                <input type="text" placeholder="vendor@gmail.com" class="form-control" id="mail" name="mail" [(ngModel)]="P.vendorMail" required>              </div>
+            </div>
+            <div class="col-sm-6 text-sm-right">
+              <button  (click)="modifierP()"  type="submit" class="btn btn-base w-100">Modifier Produit</button>
+
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- signup-page-end -->
+<app-footer-user></app-footer-user>
+
+<!--<form>-->
+<!--  <input type="text" name="title" [(ngModel)]="P.name">-->
+<!--  <br>-->
+<!--  <input type="text" name="price" [(ngModel)]="P.price">-->
+<!--  <br>-->
+<!--  <input type="text" name="quantity" [(ngModel)]="P.description">-->
+<!--  <br>-->
+<!--  <input type="text" name="quantity" [(ngModel)]="P.categorie">-->
+<!--  <br>-->
+<!--  <input type="text" name="quantity" [(ngModel)]="P.color">-->
+<!--  <br>-->
+<!--  <input type="text" name="quantity" [(ngModel)]="P.vendorMail">-->
+<!--  <br>-->
+<!--  <input type="text" name="quantity" [(ngModel)]="P.image">-->
+<!--  <button type="submit" (click)="updateProduct()">Save</button>-->
+<!--</form>-->

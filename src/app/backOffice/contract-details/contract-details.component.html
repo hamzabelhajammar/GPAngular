@@ -1,0 +1,129 @@
+<!-- Layout wrapper -->
+<div class="layout-wrapper layout-content-navbar">
+  <div class="layout-container">
+    <app-menu-admin></app-menu-admin>
+    <div class="layout-page">
+      <app-navbar-admin></app-navbar-admin>
+      <div class="content-wrapper">
+        <div class="container-xxl flex-grow-1 container-p-y">
+          <div class="row">
+            <div class="col-lg-8 mb-4 order-0">
+              <div class="card">
+                <div class="d-flex align-items-end row">
+                  <div class="col-sm-7">
+                    <div class="card-body">
+                      <div class="container mt-3" *ngIf="contract">
+                        <h2 class="font-weight-bold text-primary">Contract Details :</h2>
+                        <br>
+                        <div class="row mt-3">
+                          <div class="col-md-6">
+                            <h4 class="font-weight-normal">Contract ID :</h4>
+                            <p class="text-secondary">{{ contract.id }}</p>
+                            <h4>Price :</h4>
+                            <p class="text-secondary">{{ contract.price }}</p>
+                            <h4>Quantity:</h4>
+                            <p class="text-secondary">{{ contract.quantity }}</p>
+                            <h4>Start Date:</h4>
+                            <p class="text-secondary">{{ contract.startDate | date: 'mediumDate' }}</p>
+                            <h4>End Date:</h4>
+                            <p class="text-secondary">{{ contract.endDate | date: 'mediumDate' }}</p>
+                            <h4>Duration:</h4>
+                            <p class="text-secondary">{{ contract.duration }}</p>
+                          </div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                          <button mat-button color="primary" type="button" class="btn btn-outline-success" (click)="downloadPDF()">Download Contract</button>
+                          <button class="btn btn-outline-primary" [routerLink]="['/contracts/all']" [ngClass]="{'btn-primary': isHovered}"
+                                  (mouseover)="isHovered = true" (mouseout)="isHovered = false">Go back</button>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-4 order-1">
+              <div class="row">
+
+                <div class="col-lg-6 col-md-12 col-6 mb-4">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="card-title d-flex align-items-start justify-content-between">
+                        <div class="avatar flex-shrink-0">
+                          <img
+                            src="/assets/back/img/icons/unicons/chart-success.png"
+                            alt="chart success"
+                            class="rounded"
+                          />
+                        </div>
+                        <div class="dropdown">
+                          <button
+                            class="btn p-0"
+                            type="button"
+                            id="cardOpt3"
+                            data-bs-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                          >
+                            <i class="bx bx-dots-vertical-rounded"></i>
+                          </button>
+                          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                            <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                            <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                          </div>
+                        </div>
+                      </div>
+                      <span class="fw-semibold d-block mb-1">Offers</span>
+                      <h3 class="card-title mb-2">456</h3>
+                      <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +33.00%</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-12 col-6 mb-4">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="card-title d-flex align-items-start justify-content-between">
+                        <div class="avatar flex-shrink-0">
+                          <img
+                            src="/assets/back/img/icons/unicons/wallet-info.png"
+                            alt="Credit Card"
+                            class="rounded"
+                          />
+                        </div>
+                        <div class="dropdown">
+                          <button
+                            class="btn p-0"
+                            type="button"
+                            id="cardOpt6"
+                            data-bs-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                          >
+                            <i class="bx bx-dots-vertical-rounded"></i>
+                          </button>
+                          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
+                            <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                            <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                          </div>
+                        </div>
+                      </div>
+                      <span>Contracts</span>
+                      <h3 class="card-title text-nowrap mb-1">87</h3>
+                      <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +22.42%</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="content-backdrop fade"></div>
+          </div>
+          <br><br><br>
+        </div>
+      </div>
+      <app-footer-admin></app-footer-admin>
+      <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+  </div>
+</div>
+

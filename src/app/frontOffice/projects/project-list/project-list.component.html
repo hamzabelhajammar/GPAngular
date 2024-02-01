@@ -1,0 +1,100 @@
+<div class="body-overlay" id="body-overlay"></div>
+<app-navbar2-user></app-navbar2-user>
+<br><br><br><br>
+<div class="container m-5">
+  <h2>Liste des projets</h2>
+  <button class="btn btn-primary mb-5" (click)="redirectToProjectForm()">Ajouter un projet</button>
+
+  <!-- Table to display project information -->
+  <table class="table">
+    <thead>
+    <tr>
+
+      <th>Nom du projet</th>
+      <th>Domaine</th>
+      <th>Description</th>
+      <th>Duree</th>
+      <th>Joure Restant</th>
+      <th>List Employee</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let project of projects;  let i = index">
+      <td>travel</td>
+      <td>Developement</td>
+      <td>un projet pour faire tourissem</td>
+      <td>60</td>
+      <td>7</td>
+      <td>     <select id="employee" class="swal2-input">
+        <option value="employee1">Ahmed mezghani</option>
+        <option value="employee2">Adem daami</option>
+        <option value="employee3">hamzan lasoud</option>
+        <option value="employee3">Mohamed chebbi</option>
+        <!-- Add more options as needed -->
+      </select></td>
+
+
+
+
+      <td class="button-cell">
+        <div class="button-group">
+        <button class="btn btn-danger" (click)="(deleteproject(i))">Supprimer</button>
+        <button class="btn btn-info" (click)="show()">Mettre à jour</button>
+        </div>
+      </td>
+    </tr>
+    <tr *ngFor="let project of projects;  let i = index">
+      <td>GP4U</td>
+      <td>Developement</td>
+      <td>TESTTEST</td>
+      <td>20</td>
+      <td>7</td>
+      <td>     <select id="employeede" class="swal2-input">
+        <option value="employee1">Ahmed mezghani</option>
+        <option value="employee2">Adem daami</option>
+        <option value="employee3">hamzan lasoud</option>
+        <option value="employee3">Mohamed chebbi</option>
+        <!-- Add more options as needed -->
+      </select></td>
+
+
+
+
+      <td class="button-cell">
+        <div class="button-group">
+          <button class="btn btn-danger" (click)="(deleteproject(i))">Supprimer</button>
+          <button class="btn btn-info" (click)="show()">Mettre à jour</button>
+        </div>
+      </td>
+    </tr>
+    <tr *ngFor="let project of projects;  let i = index">
+      <td>Gestion de reclamtion</td>
+      <td>BI</td>
+      <td>TESTTEST</td>
+      <td>18</td>
+      <td>3</td>
+      <td>     <select id="employSee" class="swal2-input">
+        <option value="employee1">Ahmed mezghani</option>
+        <option value="employee2">Adem daami</option>
+        <option value="employee3">hamza lasoud</option>
+        <option value="employee3">Mohamed chebbi</option>
+        <!-- Add more options as needed -->
+      </select></td>
+
+
+
+
+      <td class="button-cell">
+        <div class="button-group">
+          <button class="btn btn-danger" (click)="(deleteproject(i))">Supprimer</button>
+          <button class="btn btn-info" (click)="show()">Mettre à jour</button>
+        </div>
+      </td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<app-footer-user></app-footer-user>

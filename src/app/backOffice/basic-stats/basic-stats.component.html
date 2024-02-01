@@ -1,0 +1,57 @@
+<!-- Layout wrapper -->
+<div class="layout-wrapper layout-content-navbar">
+  <div class="layout-container">
+    <app-menu-admin></app-menu-admin>
+    <div class="layout-page">
+      <app-navbar-admin></app-navbar-admin>
+      <div class="content-wrapper">
+        <div class="container-xxl flex-grow-1 container-p-y">
+          <div class="row">
+            <div class="col-lg-8 mb-4 order-0">
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title text-primary">COCOMARKET's Contracts Statistics :</h3>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="text-center"><h4>Month Range</h4></div>
+                    <br>
+                    <div class="col-sm-3" *ngFor="let stat of stats">
+                      <div class="text-center">{{stat.duration}}</div>
+                      <div class="progress">
+                        <div class="progress-bar bg-info"
+                             role="progressbar"
+                             [style.width.%]="stat?.count / getTotalCount() * 100">
+                        </div>
+                      </div>
+                      <div class="text-center">{{stat?.count}}</div>
+                    </div>
+                  </div>
+                  <br>
+                  <div class="text-center"><h4>Number of Contracts</h4></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 mb-4 order-1">
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title text-primary">Average Contract Duration</h3>
+                  <p class="text-success">Average Duration: {{avgDuration}}</p>
+                  <p class="text-success">Total Contracts: {{totalContracts}}</p>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <br><br>
+        </div>
+      </div>
+      <div>
+        <button type="button" class="btn btn-outline-primary" [routerLink]="['/contracts/all']">Go back</button>
+      </div>
+      <app-footer-admin></app-footer-admin>
+      <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+  </div>
+</div>
